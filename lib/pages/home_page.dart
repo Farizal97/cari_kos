@@ -1,4 +1,5 @@
 import 'package:cari_kos/models/city.dart';
+import 'package:cari_kos/models/space.dart';
 import 'package:cari_kos/theme.dart';
 import 'package:cari_kos/widgets/city_card.dart';
 import 'package:cari_kos/widgets/space_card.dart';
@@ -116,19 +117,55 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 16,
               ),
-              Column(
-                children: [
-                  SpaceCard(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(),
-                ],
-              )
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: edge,
+                ),
+                child: Column(
+                  children: [
+                    SpaceCard(
+                      Space(
+                        id: 1,
+                        name: 'Kuretakeso Hott',
+                        imageUrl: 'assets/space-1.png',
+                        price: 52,
+                        city: 'Bandung',
+                        country: 'Germany',
+                        rating: 4,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SpaceCard(
+                      Space(
+                        id: 2,
+                        name: 'Roemah Nenek',
+                        imageUrl: 'assets/space-2.png',
+                        price: 11,
+                        city: 'Seattle',
+                        country: 'Bogor',
+                        rating: 5,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    SpaceCard(
+                      Space(
+                        id: 3,
+                        name: 'Darling How',
+                        imageUrl: 'assets/space-3.png',
+                        price: 20,
+                        city: 'Jakarta',
+                        country: 'Indonesia',
+                        rating: 3,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              //NOTE:TIPS&GuidE
             ],
           ),
         ),

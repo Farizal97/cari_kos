@@ -1,10 +1,12 @@
+import 'package:cari_kos/models/space.dart';
 import 'package:flutter/material.dart';
 
 import '../theme.dart';
 
 class SpaceCard extends StatelessWidget {
-  const SpaceCard({Key? key}) : super(key: key);
-
+  
+  final Space space;
+  SpaceCard(this.space);
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -17,7 +19,7 @@ class SpaceCard extends StatelessWidget {
             child: Stack(
               children: [
                 Image.asset(
-                  'assets/space-1.png',
+                 space.imageUrl,
                 ),
                 Align(
                   alignment: Alignment.topRight,
@@ -40,7 +42,7 @@ class SpaceCard extends StatelessWidget {
                           height: 22,
                         ),
                         Text(
-                          '4/5',
+                          '${space.rating}/5',
                           style: WhiteTextStyle.copyWith(
                             fontSize: 13,
                           ),
@@ -60,7 +62,7 @@ class SpaceCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Kuretakeso Hott',
+             space.name,
               style: blackTextStyle.copyWith(
                 fontSize: 18,
               ),
@@ -70,7 +72,7 @@ class SpaceCard extends StatelessWidget {
             ),
             Text.rich(
               TextSpan(
-                text: '\$52',
+                text: '\$${space.price}',
                 style: purpleTextStyle.copyWith(
                   fontSize: 16,
                 ),
@@ -88,7 +90,7 @@ class SpaceCard extends StatelessWidget {
               height: 16,
             ),
             Text(
-              'Bandung, Germany',
+              '${space.city}, ${space.country}',
               style: greyTextStyle,
             ),
           ],

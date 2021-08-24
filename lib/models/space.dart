@@ -7,5 +7,13 @@ class Space {
   late String country;
   late int rating;
 
-  Space({required this.id,required this.name,})
+  Space({
+    required this.city,
+    required this.country,
+    required this.id,
+    required this.imageUrl,
+    required this.name,
+    required this.price,
+    required this.rating,
+  });
 }
