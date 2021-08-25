@@ -2,7 +2,6 @@ import 'package:cari_kos/models/city.dart';
 import 'package:cari_kos/models/space.dart';
 import 'package:cari_kos/models/tips.dart';
 import 'package:cari_kos/theme.dart';
-import 'package:cari_kos/widgets/bottom_navbar_item.dart';
 import 'package:cari_kos/widgets/city_card.dart';
 import 'package:cari_kos/widgets/space_card.dart';
 import 'package:cari_kos/widgets/tips_card.dart';
@@ -224,9 +223,7 @@ class HomePage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(23),
                 ),
                 child: Row(
-                  children: [
-                    BottomNavbarItem(),
-                  ],
+                  children: [],
                 ),
               )
             ],
