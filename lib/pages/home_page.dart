@@ -1,13 +1,14 @@
 import 'package:cari_kos/models/city.dart';
 import 'package:cari_kos/models/space.dart';
+import 'package:cari_kos/models/tips.dart';
 import 'package:cari_kos/theme.dart';
+import 'package:cari_kos/widgets/bottom_navbar_item.dart';
 import 'package:cari_kos/widgets/city_card.dart';
 import 'package:cari_kos/widgets/space_card.dart';
+import 'package:cari_kos/widgets/tips_card.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,7 +166,69 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
+              SizedBox(
+                height: 30,
+              ),
               //NOTE:TIPS&GuidE
+              Padding(
+                padding: EdgeInsets.only(left: edge),
+                child: Text(
+                  'Tips & Guidance',
+                  style: regularTextStyle.copyWith(
+                    fontSize: 16,
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 16,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: edge,
+                ),
+                child: Column(
+                  children: [
+                    TipsCard(
+                      Tips(
+                        id: 1,
+                        title: 'City Guidelines',
+                        imageUrl: 'assets/tips-2.png',
+                        updatedAt: '20 Apr',
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TipsCard(
+                      Tips(
+                        id: 2,
+                        title: 'Jakarta Fairship',
+                        imageUrl: 'assets/tips-1.png',
+                        updatedAt: '11 Dec',
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 50,
+              ),
+              Container(
+                height: 65,
+                width: MediaQuery.of(context).size.width - (2 * edge),
+                margin: EdgeInsets.symmetric(
+                  horizontal: edge,
+                ),
+                decoration: BoxDecoration(
+                  color: Color(0xffF6F7F8),
+                  borderRadius: BorderRadius.circular(23),
+                ),
+                child: Row(
+                  children: [
+                    BottomNavbarItem(),
+                  ],
+                ),
+              )
             ],
           ),
         ),
