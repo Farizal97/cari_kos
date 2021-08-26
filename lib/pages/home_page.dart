@@ -225,7 +225,22 @@ class HomePage extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    BottomNavbarItem(),
+                    BottomNavbarItem(
+                      imageUrl: 'assets/icon_home.png',
+                      isActive: true,
+                    ),
+                    BottomNavbarItem(
+                      imageUrl: 'assets/icon_mail.png',
+                      isActive: false,
+                    ),
+                    BottomNavbarItem(
+                      imageUrl: 'assets/icon_card.png',
+                      isActive: false,
+                    ),
+                    BottomNavbarItem(
+                      imageUrl: 'assets/icon_love.png',
+                      isActive: false,
+                    ),
                   ],
                 ),
               )
