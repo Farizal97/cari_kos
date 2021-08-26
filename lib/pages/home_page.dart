@@ -213,26 +213,43 @@ class HomePage extends StatelessWidget {
               SizedBox(
                 height: 50,
               ),
-              Container(
-                height: 65,
-                width: MediaQuery.of(context).size.width - (2 * edge),
-                margin: EdgeInsets.symmetric(
-                  horizontal: edge,
-                ),
-                decoration: BoxDecoration(
-                  color: Color(0xffF6F7F8),
-                  borderRadius: BorderRadius.circular(23),
-                ),
-                child: Row(
-                  children: [
-                    BottomNavbarItem(),
-                  ],
-                ),
-              ),
             ],
           ),
         ),
       ),
+      floatingActionButton: Container(
+        height: 50,
+        width: MediaQuery.of(context).size.width - (2 * edge),
+        margin: EdgeInsets.symmetric(
+          horizontal: edge,
+        ),
+        decoration: BoxDecoration(
+          color: Color(0xffF6F7F8),
+          borderRadius: BorderRadius.circular(23),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            BottomNavbarItem(
+              imageUrl: 'assets/icon_home.png',
+              isActive: true,
+            ),
+            BottomNavbarItem(
+              imageUrl: 'assets/icon_mail.png',
+              isActive: false,
+            ),
+            BottomNavbarItem(
+              imageUrl: 'assets/icon_card.png',
+              isActive: false,
+            ),
+            BottomNavbarItem(
+              imageUrl: 'assets/icon_love.png',
+              isActive: false,
+            ),
+          ],
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
