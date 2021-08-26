@@ -2,7 +2,6 @@ import 'package:cari_kos/models/city.dart';
 import 'package:cari_kos/models/space.dart';
 import 'package:cari_kos/models/tips.dart';
 import 'package:cari_kos/theme.dart';
-import 'package:cari_kos/widgets/bottom_navbar_item.dart';
 import 'package:cari_kos/widgets/city_card.dart';
 import 'package:cari_kos/widgets/space_card.dart';
 import 'package:cari_kos/widgets/tips_card.dart';
@@ -220,30 +219,13 @@ class HomePage extends StatelessWidget {
                   horizontal: edge,
                 ),
                 decoration: BoxDecoration(
-                  color: Color(0xffF6F7F8),
+                  color: Colors.blue,
                   borderRadius: BorderRadius.circular(23),
                 ),
                 child: Row(
-                  children: [
-                    BottomNavbarItem(
-                      imageUrl: 'assets/icon_home.png',
-                      isActive: true,
-                    ),
-                    BottomNavbarItem(
-                      imageUrl: 'assets/icon_mail.png',
-                      isActive: false,
-                    ),
-                    BottomNavbarItem(
-                      imageUrl: 'assets/icon_card.png',
-                      isActive: false,
-                    ),
-                    BottomNavbarItem(
-                      imageUrl: 'assets/icon_love.png',
-                      isActive: false,
-                    ),
-                  ],
+                  children: [],
                 ),
-              )
+              ),
             ],
           ),
         ),

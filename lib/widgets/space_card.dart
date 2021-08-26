@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../theme.dart';
 
 class SpaceCard extends StatelessWidget {
-  
   final Space space;
   SpaceCard(this.space);
   @override
@@ -19,7 +18,7 @@ class SpaceCard extends StatelessWidget {
             child: Stack(
               children: [
                 Image.asset(
-                 space.imageUrl,
+                  space.imageUrl,
                 ),
                 Align(
                   alignment: Alignment.topRight,
@@ -37,7 +36,7 @@ class SpaceCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'assets/Icon_star.png',
+                          'assets/icon_start.png',
                           width: 22,
                           height: 22,
                         ),
@@ -62,7 +61,7 @@ class SpaceCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-             space.name,
+              space.name,
               style: blackTextStyle.copyWith(
                 fontSize: 18,
               ),
