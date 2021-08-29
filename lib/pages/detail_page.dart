@@ -1,10 +1,27 @@
 import 'package:cari_kos/theme.dart';
 import 'package:cari_kos/widgets/facility_item.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'error_page.dart';
 
 class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    launchUrl(String url) async {
+      if (await canLaunch(url)) {
+        launch(url);
+      } else {
+        // throw (url);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ErrorPage(),
+          ),
+        );
+      }
+    }
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -16,30 +33,6 @@ class DetailPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width,
               height: 350,
               fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: edge,
-                vertical: 30,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Image.asset(
-                      'assets/btn_back.png',
-                      width: 40,
-                    ),
-                  ),
-                  Image.asset(
-                    'assets/btn_wishlist.png',
-                    width: 40,
-                  ),
-                ],
-              ),
             ),
             ListView(
               children: [
@@ -264,9 +257,16 @@ class DetailPage extends StatelessWidget {
                         'Jln. Kappan Sukses No. 20\nPalembang',
                         style: greyTextStyle,
                       ),
-                      Image.asset(
-                        'assets/maps.png',
-                        width: 40,
+                      InkWell(
+                        onTap: () {
+                          // launchUrl(
+                          //     'https://www.google.co.id/maps/@-6.2008406,106.7987143,16z?hl=id');
+                          launchUrl('qwertyzuiop');
+                        },
+                        child: Image.asset(
+                          'assets/maps.png',
+                          width: 40,
+                        ),
                       ),
                     ],
                   ),
@@ -281,7 +281,9 @@ class DetailPage extends StatelessWidget {
                   height: 50,
                   width: MediaQuery.of(context).size.width - (2 * edge),
                   child: RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      launchUrl('tel:+628158781640');
+                    },
                     color: purpleColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(17),
@@ -298,7 +300,31 @@ class DetailPage extends StatelessWidget {
                   height: 40,
                 ),
               ],
-            )
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: edge,
+                vertical: 30,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Image.asset(
+                      'assets/btn_back.png',
+                      width: 40,
+                    ),
+                  ),
+                  Image.asset(
+                    'assets/btn_wishlist.png',
+                    width: 40,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
