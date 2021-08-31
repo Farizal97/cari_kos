@@ -1,16 +1,20 @@
 import 'package:cari_kos/models/city.dart';
 import 'package:cari_kos/models/space.dart';
 import 'package:cari_kos/models/tips.dart';
+import 'package:cari_kos/providers/space_provider.dart';
 import 'package:cari_kos/theme.dart';
 import 'package:cari_kos/widgets/bottom_navbar_item.dart';
 import 'package:cari_kos/widgets/city_card.dart';
 import 'package:cari_kos/widgets/space_card.dart';
 import 'package:cari_kos/widgets/tips_card.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var spaceProvider = Provider.of<SpaceProvider>(context);
+
     return Scaffold(
       backgroundColor: whiteColor,
       body: SafeArea(
@@ -119,74 +123,35 @@ class HomePage extends StatelessWidget {
               height: 16,
             ),
             Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: edge,
-              ),
-              child: Column(
-                children: [
-                  SpaceCard(
-                    Space(
-                      id: 1,
-                      name: 'Kuretakeso Hott',
-                      imageUrl: 'assets/space-1.png',
-                      price: 52,
-                      city: 'Bandung',
-                      country: 'Germany',
-                      rating: 4,
-                      photos: [],
-                      phone: '',
-                      address: '',
-                      mapUrl: '',
-                      numberOfBedrooms: 3,
-                      numberOfCupboards: 3,
-                      numberOfKitchens: 3,
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(
-                    Space(
-                      id: 2,
-                      name: 'Roemah Nenek',
-                      imageUrl: 'assets/space-2.png',
-                      price: 11,
-                      city: 'Seattle',
-                      country: 'Bogor',
-                      rating: 5,
-                      address: '',
-                      mapUrl: '',
-                      numberOfBedrooms: 3,
-                      numberOfCupboards: 3,
-                      numberOfKitchens: 3,
-                      phone: '',
-                      photos: [],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  SpaceCard(
-                    Space(
-                      id: 3,
-                      name: 'Darling How',
-                      imageUrl: 'assets/space-3.png',
-                      price: 20,
-                      city: 'Jakarta',
-                      country: 'Indonesia',
-                      rating: 3,
-                      address: '',
-                      mapUrl: '',
-                      numberOfBedrooms: 3,
-                      numberOfCupboards: 3,
-                      numberOfKitchens: 3,
-                      phone: '',
-                      photos: [],
-                    ),
-                  ),
-                ],
-              ),
-            ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: edge,
+                ),
+                child: FutureBuilder(
+                  future: spaceProvider.getRecommendedSpaces(),
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) {
+                      List<Space> data = snapshot.data;
+
+                      int index = 0;
+
+                      return Column(
+                        children: data.map((item) {
+                          index++;
+                          return Container(
+                            margin: EdgeInsets.only(
+                              top: index == 1 ? 0 : 30,
+                            ),
+                            child: SpaceCard(item),
+                          );
+                        }).toList(),
+                      );
+                    }
+
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  },
+                )),
             SizedBox(
               height: 30,
             ),
